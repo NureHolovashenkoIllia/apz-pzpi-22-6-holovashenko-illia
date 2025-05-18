@@ -1,0 +1,324 @@
+Міністерство освіти і науки України
+Харківський національний університет радіоелектроніки
+ Факультет комп’ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+
+до практичного заняття №2
+з дисципліни "Архітектура програмного забезпечення"
+на тему "Архітектура відомих програмних систем"
+
+
+
+
+Виконав:
+ст. гр. ПЗПІ-22-6
+Головашенко І. В.
+
+Перевірив:
+ст. викл. катедри ПІ
+Сокорчук І. П.
+
+
+
+
+
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+Таблиця 1.1 – Історія змін
+№
+Дата
+Версія звіту
+Опис змін та виправлень
+1
+11.05.2025
+0.1
+Створено розділи “Історія змін” та “Завдання”
+2
+12.04.2025
+0.1
+Створено розділ “Опис виконаної роботи” та “Висновки”
+3
+17.05.2025
+0.1
+Створено Додаток А, Додаток Б, та Додаток В
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 ЗАВДАННЯ
+
+Завдання на практичне заняття 2 (ПЗ2):
+1. Підготувати доповідь на тему: «Архітектура програмної системи Спотіфай (Spotify)»;
+2. Створити та оформити слайди презентації доповіді;
+3. Створити та опублікувати на YouTube відеозапис доповіді;
+4. Оформити та завантажити на dl.nure.ua звіт до виконаної роботи;
+5. Експортувати звіт у файл у простому текстововому форматі та завантажити цей файл у директорію Pract2 у репозиторії GitHub;
+6. Завантажити у вказану далі піддиректорію увесь програмний код, який розглядається у доповіді ПЗ2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+     Під час виконання практичного завдання було проведено дослідження архітектури програмної системи Spotify, а також створено звіт, презентацію та відеодоповідь, які відображають ключові технічні аспекти роботи цього стримінгового сервісу.
+     3.1. Аналіз архітектури програмної системи
+     У межах роботи була досліджена мікросервісна архітектура, на якій базується Spotify. Основна ідея полягає у поділі всієї системи на незалежні сервіси (модулі), кожен із яких виконує чітко визначену функцію – пошук, рекомендації, обробка підписок, плейлисти. Такий підхід забезпечує масштабованість, ізоляцію помилок та незалежне розгортання.
+     3.2. Мови програмування та технології
+     Spotify реалізує свої серверні сервіси переважно за допомогою таких мов:
+* Java – для основної логіки мікросервісів з використанням Spring Framework;
+* Scala – для обробки даних і потокової аналітики;
+* Node.js – для легкої реалізації мережевих сервісів.
+На клієнтському рівні використовуються:
+* React та Redux – для побудови веб-інтерфейсів;
+* Sass і Webpack – для стилізації та складання проєкту.
+
+     3.3. Архітектурні рішення та шаблони
+     Було розглянуто такі архітектурні патерни та принципи:
+* Поділ за функціональністю (feature partitioning): кожна функція – в зоні відповідальності окремої команди;
+* DevOps-підхід: повна автономія скводів у створенні, розгортанні й обслуговуванні функціоналу;
+* Self-service infrastructure: кожна команда має доступ до інструментів автоматичного розгортання;
+* Event-driven architecture з використанням Apache Kafka для обробки подій у реальному часі.
+3.4. Інструменти обробки даних та ML
+Важливим елементом є система персоналізації, побудована на:
+* Hadoop – для офлайн-аналітики історичних даних;
+* Apache Storm – для потокової обробки;
+* Google BigQuery / Bigtable – для зберігання та швидкого доступу до метаданих;
+* ML-моделі для формування рекомендацій на основі поведінкових даних.
+     Також було створено слайди презентації для супроводу усної доповіді, підготовлено відеозапис пояснення теми та завантажено його на YouTube. Посилання на відеозапис доповіді та текст хронологічного опису доповіді наведено у Додатку А.
+
+
+4 ВИСНОВКИ
+
+     У результаті виконання практичного завдання було підготовлено доповідь на тему «Архітектура програмної системи Spotify», що охоплює ключові інженерні підходи, архітектурні рішення та використані технології в одній із наймасштабніших стримінгових платформ сучасності, розроблено та оформлено презентацію, яка візуально доповнює основні тези доповіді та систематизує матеріал у зручній для сприйняття формі, створено відеозапис виступу, опублікований на платформі YouTube, оформлено звіт згідно з вимогами курсу, включно з текстовим файлом, завантаженим до GitHub-репозиторію.
+     Також, було отримано навички аналізу архітектури великих програмних систем, зокрема роботи з мікросервісами, хмарною інфраструктурою, системами обробки даних та рекомендаційними механізмами на базі машинного навчання, поглиблено розуміння принципів організації командної роботи, особливостей масштабування сервісів та застосування open-source технологій у промислових умовах.
+     Слайди презентації наведено у Додатку Б. Програмний код використаний для стоворення таблиць бази даних Spotify Premium System Design наведено у Додатку В.
+     Посилання на GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/tree/main/Pract2
+
+
+
+5 СПИСОК ВИКОРИСТАНИХ ДЖЕРЕЛ
+
+Список використаних джерел
+1. Backend infrastructure at Spotify | Spotify Engineering. Spotify Engineering. URL: https://engineering.atspotify.com/2013/03/backend-infrastructure-at-spotify (дата звернення: 17.05.2025).
+2. GeeksforGeeks. Design Spotify Premium | System Design - GeeksforGeeks. GeeksforGeeks. URL: https://www.geeksforgeeks.org/design-spotify-premium-system-design/ (дата звернення: 17.05.2025).
+3. Spotify: A deep dive into their tech stack. Nearshore Software Developtment Company: IT talent from LatAm. URL: https://www.devlane.com/blog/spotify-a-deep-dive-into-their-tech-stack (дата звернення: 17.05.2025).
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток А
+Посилання на відеозапис доповіді та текст хронологічного опису доповіді
+
+Відеозапис доповіді на YouTube: https://youtu.be/x1DIVGGBK1A.
+
+Хронологічний опис відеозапису:
+00:00 – Представлення.
+00:22 – Зміст презентації.
+00:27 – Вступ, опис стримінгово сервісу Spotify.
+01:55 – Загальні принципи архітектури Spotify.
+02:33 – Загальні принципи архітектури Spotify. Функціональний поділ.
+03:21 – Загальні принципи архітектури Spotify. Кросфункціональні команди.
+04:07 – Технічна інфраструктура Spotify. Backend.
+05:08 – Технічна інфраструктура Spotify. Сховища даних.
+06:11 – Технічна інфраструктура Spotify. Система повідомлень.
+06:55 – Технічна інфраструктура Spotify. Моніторинг та безпека.
+07:36 – Клієнтська частина програмної системи Spotify.
+08:58 – Персоналізація та аналітика.
+11:00 – Розвиток open-source технологій.
+12:27 – Висновки з презентації.
+13:52 – Список використаних джерел.
+
+
+
+
+
+
+
+Додаток Б
+Слайди презентації доповіді
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток В
+Приклади програмного коду
+
+     Скрипти для стоворення таблиць бази даних Spotify Premium System Design:
+1. CREATE TABLE Users
+2. (
+3.     User_ID       INT AUTO_INCREMENT PRIMARY KEY,
+4.     Name          VARCHAR(50)  NOT NULL,
+5.     Email         VARCHAR(50)  NOT NULL UNIQUE,
+6.     Password      VARCHAR(100) NOT NULL,
+7.     Date_of_Birth DATE,
+8.     Profile_Image Blob,
+9.     User_Type     VARCHAR(10)  NOT NULL DEFAULT 'regular'
+10. );
+11. CREATE TABLE Premium_Feature
+12. (
+13.     Premium_Feature_ID INT PRIMARY KEY AUTO_INCREMENT,
+14.     Name               VARCHAR(50) NOT NULL
+15. );
+16. CREATE TABLE User_Premium_Feature
+17. (
+18.     User_ID            INT,
+19.     Premium_Feature_ID INT,
+20.     PRIMARY KEY (User_ID, Premium_Feature_ID),
+21.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID),
+22.     FOREIGN KEY (Premium_Feature_ID) REFERENCES Premium_Feature (Premium_Feature_ID)
+23. );
+24. CREATE TABLE Payment
+25. (
+26.     Payment_ID     INT PRIMARY KEY AUTO_INCREMENT,
+27.     User_ID        INT            NOT NULL,
+28.     Payment_Method VARCHAR(50)    NOT NULL,
+29.     Payment_Date   DATE           NOT NULL,
+30.     Amount         DECIMAL(10, 2) NOT NULL,
+31.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID)
+32. );
+33. CREATE TABLE Subscription_Plan
+34. (
+35.     Subscription_Plan_ID INT PRIMARY KEY AUTO_INCREMENT,
+36.     Name                 VARCHAR(50)    NOT NULL,
+37.     Price                DECIMAL(10, 2) NOT NULL,
+38.     Description          VARCHAR(500)   NOT NULL
+39. );
+40. CREATE TABLE User_Subscription_Plan
+41. (
+42.     User_ID              INT,
+43.     Subscription_Plan_ID INT,
+44.     Start_Date           DATE NOT NULL,
+45.     End_Date             DATE NOT NULL,
+46.     PRIMARY KEY (User_ID, Subscription_Plan_ID),
+47.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID),
+48.     FOREIGN KEY (Subscription_Plan_ID) REFERENCES Subscription_Plan (Subscription_Plan_ID)
+49. );
+50. CREATE TABLE Artists
+51. (
+52.     Artist_ID INT AUTO_INCREMENT PRIMARY KEY,
+53.     Name      VARCHAR(50) NOT NULL,
+54.     Genre     VARCHAR(50),
+55.     Image_URL VARCHAR(255)
+56. );
+57. CREATE TABLE Albums
+58. (
+59.     Album_ID     INT AUTO_INCREMENT PRIMARY KEY,
+60.     Artist_ID    INT,
+61.     Name         VARCHAR(50) NOT NULL,
+62.     Release_Date DATE,
+63.     Image        VARCHAR(255),
+64.     FOREIGN KEY (Artist_ID) REFERENCES Artists (Artist_ID)
+65. );
+66. CREATE TABLE Tracks
+67. (
+68.     Track_ID INT AUTO_INCREMENT PRIMARY KEY,
+69.     Album_ID INT,
+70.     Name     VARCHAR(50) NOT NULL,
+71.     Duration INT         NOT NULL,
+72.     Path     VARCHAR(255),
+73.     FOREIGN KEY (Album_ID) REFERENCES Albums (Album_ID)
+74. );
+75. CREATE TABLE Playlists
+76. (
+77.     Playlist_ID INT AUTO_INCREMENT PRIMARY KEY,
+78.     User_ID     INT,
+79.     Name        VARCHAR(50) NOT NULL,
+80.     Image       Blob,
+81.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID)
+82. );
+83. CREATE TABLE Playlist_Tracks
+84. (
+85.     Playlist_ID INT,
+86.     Track_ID    INT,
+87.     `Order`     INT,
+88.     PRIMARY KEY (Playlist_ID, Track_ID),
+89.     FOREIGN KEY (Playlist_ID) REFERENCES Playlists (Playlist_ID),
+90.     FOREIGN KEY (Track_ID) REFERENCES Tracks (Track_ID)
+91. );
+92. CREATE TABLE Followers
+93. (
+94.     User_ID   INT,
+95.     Artist_ID INT,
+96.     PRIMARY KEY (User_ID, Artist_ID),
+97.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID),
+98.     FOREIGN KEY (Artist_ID) REFERENCES Artists (Artist_ID)
+99. );
+100. CREATE TABLE Likes
+101. (
+102.     User_ID        INT,
+103.     Track_ID       INT,
+104.     Like_Date_Time DATETIME,
+105.     PRIMARY KEY (User_ID, Track_ID),
+106.     FOREIGN KEY (User_ID) REFERENCES Users (User_ID),
+107.     FOREIGN KEY (Track_ID) REFERENCES Tracks (Track_ID)
+108. );
