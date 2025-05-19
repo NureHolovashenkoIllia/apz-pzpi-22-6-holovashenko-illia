@@ -395,21 +395,20 @@ PATCH
 Додаток А
 Посилання на відеозапис доповіді та текст хронологічного опису доповіді
 
-Відеозапис доповіді на YouTube: .
+Відеозапис доповіді на YouTube: https://youtu.be/qHspYsVmeuk.
 Хронологічний опис відеозапису:
-
-
-
-
-
-
-
-
-
-
-
-
-
+00:00 – Представлення.
+00:17 – Вступ. Опис використаних технологій для реалізації проєкту.
+00:29 – Опис схеми бази даних проєкту.
+00:59 – Опис архітектури проєкту.
+03:07 – Опис всіх реалізованих ендпоїнтів.
+04:06 – Тестування авторизації користувачів. Сворення будівлі та датчиків.
+06:40 – Тестування бізнес логіки розрахунку ціни обслуговування.
+07:24 – Тестування бізнес логіки оплати обслуговувань будівель.
+09:24 – Тестування бізнес логіки надсилання сповіщень про тривогу користувачеві на електронну пошту.
+10:40 – Тестування ролі глобального адміністратора.
+12:33 – Тестування ролі системного адміністратора.
+14:12 – Тестування ролі адміністратора бази даних.
 
 
 
@@ -501,7 +500,8 @@ PATCH
 Додаток В
 Програмний код
 
-     Приклад програмного коду для підключення до MQTT-брокера та обробки вхідних JSON-повідомлень вимірів сенсорів:
+В.1 Підключення до MQTT-брокера та обробки вхідних JSON-повідомлень вимірів сенсорів
+GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/blob/main/Lab2/pzpi-22-6-holovashenko-illia-lab2/src/main/java/ua/nure/holovashenko/flameguard_api/mqtt/MqttListener.java.
 1.  @Component
 2.  public class MqttListener {
 3.
@@ -575,7 +575,8 @@ PATCH
 71. }
 
 
-     Приклад програмного коду для створення резервних копій бази даних FlameGuard:
+В.2 Методи для створення резервних копій бази даних FlameGuard
+GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/blob/main/Lab2/pzpi-22-6-holovashenko-illia-lab2/src/main/java/ua/nure/holovashenko/flameguard_api/service/SystemSettingsService.java.
 1.  public void createDatabaseBackup(String backupFilePath) {
 2.      backupFilePath = ensureSqlExtension(backupFilePath);
 3.      Path backupPath = prepareBackupFile(backupFilePath);
