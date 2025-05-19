@@ -1,0 +1,643 @@
+Міністерство освіти і науки України
+Харківський національний університет радіоелектроніки
+Факультет комп’ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+
+з лабораторної роботи №2
+з дисципліни "Архітектура програмного забезпечення"
+на тему "РОЗРОБКА ПРОГРАМНОЇ АРХІТЕКТУРИ, СТВОРЕННЯ ТА
+ВІДЛАГОДЖЕННЯ ПРОГРАМНОГО КОДУ СЕРВЕРНОЇ ЧАСТИНИ
+ПРОГРАМНОЇ СИСТЕМИ"
+
+
+
+
+Виконав:
+ст. гр. ПЗПІ-22-6
+Головашенко І. В.
+
+Перевірив:
+ст. викл. катедри ПІ
+Сокорчук І. П.
+
+
+
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+Таблиця 1.1 – Історія змін
+№
+Дата
+Версія звіту
+Опис змін та виправлень
+1
+18.05.2025
+0.1
+Створено розділи “Історія змін” та “Завдання”.
+2
+19.05.2025
+0.1
+Створено розділ “Опис виконаної роботи”.
+3
+19.05.2025
+0.1
+Створено розділи “Висновки” та додатки А, Б, В.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 ЗАВДАННЯ
+
+Завдання на лабораторну роботу №2 (ЛБ2):
+1. Описати програмну архітектуру програмної системи та архітектуру її серверної частини.
+2. Описати математичні методи обробки користувацьких даних для реалізації бізнес логіки програмної системи.
+3. Описати математичні методи для обробки користувацьких даних у серверній частині програмної системи.
+4. Описати ER-модель даних програмної системи та структуру БД.
+5. Описати специфікацію REST або іншого вибраного вами методу взаємодії програмних компонент програмної системи.
+6. Описати використані у серверній частині програмної системи програмні технології та компоненти.
+7. Описати способи інтерналізації у серверній частині програмної системи.
+8. Описати програмну реалізацію серверної частини програмної системи.
+9. Описати етапи функціонального тестування створеної серверної частини програмної системи.
+10.  Відкрити створений на попередній лабораторній роботі репозиторій GitHub.
+11.  Створити у репозиторії директорію Task2 та текстовий файл з описом інженерних рішень у цій частині проєкту.
+12.  Зафіксуйте кожну внесену зміну командою git commit з відповідним коментарем та фіксуйте цією командою усі наступні зміни у проєкті.
+13.  Створіть у директорії Task2 піддиректорію для програмного коду.
+14.  Створіть програмний код, завантажте його у створену піддиректорію, зафіксуйте внесені у репозиторій зміни.
+15.  Виконайте функціональне тестування створеного програмного коду та створіть відеозапис цього тестування тривалістю 7..10 хвилин з усними поясненнями процесу тестування.
+16.  Завантажте створений відеозапис тестування YouTube канал для вашого облікового запису в домені @nure.ua.
+17.  Створіть для завантаженого запису його хронологічний опис.
+18.  Оформіть звіт у форматі pdf та завантажте його на навчальну платформу https://dl.nure.ua/.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+3.1 Опис архітектури системи
+     Реалізована програмна система є веб-застосунком на основі Spring Boot фреймворку мови програмування Java, для збереження даних використовує базу даних MySQL, автентифікація користувачів відбувається за допомогою JWT токенів.
+     Основні компоненти серверної частини:
+1. Загальна архітектура
+     Застосунок організовано за архітектурним підходом Layered Architecture (Шарова архітектура).
+     Основні компоненти розподілені між такими пакетами:
+* Controller: Обробляє HTTP-запити, виконує маршрутизацію, валідацію даних та формує HTTP-відповіді.
+* Entity: Визначає моделі даних, що відображають структуру таблиць у базі даних з використанням JPA/Hibernate.
+* Repository: Реалізує доступ до бази даних та CRUD-операції за допомогою Spring Data JPA.
+* Service: Містить бізнес-логіку та забезпечує взаємодію між контролерами та репозиторіями.
+
+     2. Функціональність
+     Серверна частина складається з наступних модулів:
+* Модуль авторизації: призначений для забезпечення безпеки та управління доступом користувачів до системи. Надає функції реєстрації нових користувачів та авторизації через API. Включає можливість аутентифікації з використанням сучасних технологій безпеки (JWT-токени).
+* Модуль облікових записів користувачів: реалізує функціонал для створення, редагування, перегляду та видалення облікових записів користувачів. Забезпечує управління ролями (звичайний користувач, адміністратор).
+* Модуль управління будівлями користувачів: дозволяє користувачам додавати, редагувати та видаляти інформацію про будівлі. Включає прив’язку будівель до користувачів та надання звітів про стан і технічне обслуговування будівель.
+* Модуль управління обслуговуваннями будівель користувачів: реалізує функціонал для ведення історії технічного обслуговування будівель. Включає створення записів про обслуговування, їх редагування, перегляд і видалення, а також оплату обслуговувань.
+* Модуль збору та обробки інформації з датчиків: здійснює інтеграцію з IoT-датчиками для отримання даних у реальному часі. Дозволяє відстежувати стан датчиків, генерувати сповіщення про події (пожежі, витік газу) і зберігати дані для подальшого аналізу.
+* Модуль адміністрування: призначений для управління системою з боку адміністратора. Включає функції управління користувачами, пристроями, налаштуваннями датчиків і системними сповіщеннями. Забезпечує доступ до аналітичних даних.
+* Модуль документації API: надає автоматичну документацію для всіх API-ендпоінтів за допомогою Swagger. Полегшує взаємодію розробників із системою та забезпечує доступ до повного опису методів через інтерфейс /swagger-ui або /v3/api-docs.
+
+     3. Ролі користувачів
+* System Administrator – управління датчиками: перегляд, додавання, редагування. Налаштування системних параметрів (граничні значення для датчиків, частота перевірки). Управління будівлями: перегляд, додавання, редагування. Управління обслуговуваннями будівель: перегляд, додавання, редагування. Управління датчиками: перегляд, додавання, редагування. Моніторинг стану системи та підрахунок вартості обслуговувань.
+* Database Administrator – регулярне резервне копіювання бази даних. Відновлення даних у разі збою. Додання налаштувань бази даних та їх редагування.
+* Global Administrator – управління ролями користувачів (додавання нових адміністраторів). Управління статусами та будівлями датчиків. Контроль доступу до ресурсів системи. Видалення користувачів, будівель, датчиків. обслуговувань.
+* Customer – реєстрація та авторизація системі. Перегляд власних даних про будівлі, тривоги, датчики та їх виміри. Отримання тривог на пошту в разі отримання датчиками критичних вимірів. Замовлення обслуговувань датчиків певної будівлі. Оплата обслуговувань.
+
+     ER-діаграма даних наведена на рисунку Б.1.
+     Структура бази даних наведена на рисунку Б.2.
+     UML-діаграма прецедентів наведена на рисунку Б.3.
+     UML-діаграма розгортання наведена на рисунку Б.4.
+     UML-діаграма взаємодії наведена на рисунку Б.5.
+     Специфікація розробленого API наведена у таблиці 3.1.
+     Таблиця 3.1 – Специфікація розробленого API
+POST
+/api/auth/register
+Реєстрація користувачів
+POST
+/api/auth/login
+Авторизація користувачів
+GET
+/api/users
+Отримання всіх користувачів
+GET
+/api/users/{id}
+Отримання даних певного користувача
+PUT
+/api/users/{id}
+Оновлення даних користувача
+DELETE
+/api/users/{id}
+Видалення користувача
+PATCH
+/api/users/{id}/role
+Оновлення ролі користувача
+DELETE
+/api/users/{id}/role
+Скидання ролі користувача до стандартної
+GET
+/api/buildings
+Отримання всіх будівель
+GET
+/api/buildings/{id}
+Отримання даних певної будівлі
+GET
+/api/buildings/user/{userId}
+Отримання будівель певного користувача
+POST
+/api/buildings
+Додавання нової будівлі
+PUT
+/api/buildings/{id}
+Оновлення даних будівлі
+DELETE
+/api/buildings/{id}
+Видалення будівлі
+GET
+/api/addresses
+Отримання всіх адрес
+GET
+/api/addresses/building/{buildingId}
+Отримання адрес для певної будівлі
+POST
+/api/addresses
+Додавання нової адреси
+PUT
+/api/addresses/{id}
+Оновлення даних адреси
+PATCH
+/api/addresses/{id}/building
+Прив'язка адреси до будівлі
+DELETE
+/api/addresses/{id}
+Видалення адреси
+GET
+/api/maintenances
+Отримання всіх обслуговувань
+GET
+/api/maintenances/{id}
+Отримання даних певного обслуговування
+GET
+/api/maintenances/building/{buildingId}
+Отримання обслуговувань для певної будівлі
+POST
+/api/maintenances
+Додавання нового обслуговування
+POST
+/api/maintenances/calculate
+Розрахунок вартісті обслуговування будівлі
+PUT
+/api/maintenances/{id}
+Оновлення даних обслуговування
+DELETE
+/api/maintenances/{id}
+Видалення обслуговування
+GET
+/api/payments
+Отримання всіх платежів
+GET
+/api/payments/maintenance/{maintenanceId}
+Отримання платежів для певного обслуговування
+POST
+/api/payments
+Додавання нового платежу
+PUT
+/api/payments/{id}
+Оновлення даних платежу
+DELETE
+/api/payments/{id}
+Видалення платежу
+POST
+/api/payments/paypal
+Створення платежу за допомогою paypal
+GET
+/api/sensors
+Отримання всіх сенсорів
+GET
+/api/sensors/{id}
+Отримання даних певного сенсору
+GET
+/api/sensors/building/{buildingId}
+Отримання сенсорів для певної будівлі
+PATCH
+/api/sensors/status
+Оновлення статусу датчика
+POST
+/api/sensors
+Додавання сенсору
+PUT
+/api/sensors/{id}
+Оновлення даних сенсору
+PATCH
+/api/sensors/{id}/status
+Оновлення статусу сенсору
+PATCH
+/api/sensors/{id}/building
+Прив'язка сенсору до будівлі
+DELETE
+/api/sensors/{id}
+Видалення сенсору
+GET
+/api/measurements
+Отримання всіх вимірів
+GET
+/api/measurements/{id}
+Отримання даних певного виміру
+GET
+/api/measurements/sensor/{sensorId}
+Отримання вимірів для певного датчику
+GET
+/api/measurements/sensor/{sensorId}/unit
+Отримання вимірів для певного датчику з певною одиницею виміру
+POST
+/api/measurements
+Додавання нового виміру
+DELETE
+/api/measurements/{id}
+Видалення виміру
+GET
+/api/alarms
+Отримання всіх тривог
+GET
+/api/alarms/{id}
+Отримання даних певної тривоги
+GET
+/api/alarms/type/{type}
+Отримання тривог певного типу
+GET
+/api/alarms/sensor/{sensorId}
+Отримання тривог для певного сенсору
+GET
+/api/alarms/building/{buildingId}
+Отримання тривог для певної будівлі
+POST
+/api/alarms
+Додавання нової тривоги
+PUT
+/api/alarms/{id}
+Оновлення даних тривоги
+DELETE
+/api/alarms/{id}
+Видалення тривоги
+POST
+/api/alarms/notify
+Надсилання сповіщень про тривогу користувачеві на електронну пошту
+
+PATCH
+/api/admin/sensor-settings/{id}/service-cost
+Оновлення вартості обслуговування
+PATCH
+/api/admin/sensor-settings/{id}/measurement-frequency
+Оновлення частоти отримання вимірів з датчиків
+PATCH
+/api/admin/sensor-settings/{id}/critical-value
+Оновлення критичних значень датчиків
+GET
+/api/admin/system-settings
+Отримання усіх системних налаштувань
+GET
+/api/admin/system-settings/backup
+Отримання бекапу бази даних
+POST
+/api/admin/system-settings
+Створення нового системного налаштування
+POST
+/api/admin/system-settings/restore
+Відновлення бази даних з заданого бекапу
+PATCH
+/api/admin/system-settings/{key}
+Оновлення заданого системного налаштування
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 ВИСНОВКИ
+
+     В ході виконання лабораторної роботи №2 було реалізовано повнофункціональну серверну частину програмної системи для попередження про пожежі. Архітектура системи побудована за принципом багаторівневої (Layered) архітектури з поділом відповідальностей між компонентами Controller, Service, Repository та Entity.
+     Основна увага була приділена побудові масштабованої та безпечної архітектури. Використання JWT-токенів для авторизації забезпечує захист доступу до ресурсів системи, а також дозволяє реалізувати гнучке управління ролями користувачів. Було реалізовано декілька модулів – управління користувачами, будівлями, обслуговуваннями, сенсорами, тривогами, платежами, а також адміністрування та документація API через Swagger.
+     Також було реалізовано інтеграцію з MQTT-брокером для обробки даних від IoT-пристроїв у реальному часі, що забезпечило швидке реагування на критичні події, як-от пожежі чи витоки газу. Крім того, було реалізовано механізм резервного копіювання бази даних та її відновлення, що підвищує надійність системи.
+     Система була детально функціонально протестована. Відеозапис з функціональним тестуванням завантажено на YouTube. Посилання на відеозапис та текст хронологічного опису наведено у Додатку А. Програмний код реалізований для збирання даних з датчиків та отримання резервних копій бази даних наведено у Додатку В.
+     У результаті виконаної роботи отримано цілісну та функціонально завершену серверну частину програмної системи, яка відповідає сучасним вимогам до архітектури, безпеки та масштабованості. Це створює надійну основу для подальшої розробки клієнтської частини та інтеграції з мобільними або веб-додатками.
+     Посилання на GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/tree/main/Lab2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток А
+Посилання на відеозапис доповіді та текст хронологічного опису доповіді
+
+Відеозапис доповіді на YouTube: .
+Хронологічний опис відеозапису:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток Б
+Графічні матеріали
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.1 – ER-діаграма даних
+
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.2 – Структура бази даних
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.3 – UML-діаграма прецедентів
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.4 – UML-діаграма розгортання
+Рисунок Б.5 – UML-діаграма взаємодії
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток В
+Програмний код
+
+     Приклад програмного коду для підключення до MQTT-брокера та обробки вхідних JSON-повідомлень вимірів сенсорів:
+1.  @Component
+2.  public class MqttListener {
+3.
+4.      private static final String SERVER_URI = "tcp://broker.hivemq.com:1883";
+5.      private static final String CLIENT_ID = "FireSafetySubscriberClient";
+6.      private static final String TOPIC = "fire_safety/data";
+7.
+8.      private final MeasurementService measurementService;
+9.      private final ObjectMapper objectMapper;
+10.     private final BuildingService buildingService;
+11.     private final SensorService sensorService;
+12.
+13.     private MqttClient client;
+14.
+15.     public MqttListener(MeasurementService measurementService, ObjectMapper objectMapper, BuildingService buildingService, SensorService sensorService) {
+16.         this.measurementService = measurementService;
+17.         this.objectMapper = objectMapper;
+18.         this.buildingService = buildingService;
+19.         this.sensorService = sensorService;
+20.     }
+21.
+22.     @PostConstruct
+23.     public void connectAndSubscribe() {
+24.         try {
+25.             client = new MqttClient(SERVER_URI, CLIENT_ID, new MemoryPersistence());
+26.             MqttConnectOptions options = new MqttConnectOptions();
+27.             options.setAutomaticReconnect(true);
+28.             options.setCleanSession(true);
+29.             options.setConnectionTimeout(30);
+30.             options.setKeepAliveInterval(60);
+31.
+32.             System.out.println("Connecting to MQTT broker...");
+33.             client.connect(options);
+34.             System.out.println("Connected to MQTT broker.");
+35.
+36.             client.subscribe(TOPIC, (topic, message) -> {
+37.                 String payload = new String(message.getPayload());
+38.                 System.out.println("Message received: " + payload);
+39.
+40.                 try {
+41.                     if (!payload.trim().startsWith("{") || !payload.trim().endsWith("}")) {
+42.                         throw new IllegalArgumentException("The message is not in JSON format");
+43.                     }
+44.
+45.                     JsonNode jsonNode = objectMapper.readTree(payload);
+46.
+47.                     if (payload.contains("sensorId") && payload.contains("measurementValue")) {
+48.                         MeasurementDto measurementDto = objectMapper.readValue(payload, MeasurementDto.class);
+49.                         measurementService.createMeasurement(measurementDto);
+50.                         sensorService.updateLastDataReceived(measurementDto.getSensorId(), measurementDto.getDateTimeReceived());
+51.                     } else if (payload.contains("buildingId") && payload.contains("buildingCondition")) {
+52.                         Integer buildingId = jsonNode.get("buildingId").asInt();
+53.                         String buildingCondition = jsonNode.get("buildingCondition").asText();
+54.                         buildingService.updateBuildingCondition(buildingId, buildingCondition);
+55.                     } else {
+56.                         System.err.println("Unknown message format.");
+57.                     }
+58.                 } catch (Exception e) {
+59.                     System.err.println("Message processing error: " + e.getMessage());
+60.                 }
+61.             });
+62.
+63.             System.out.println("Subscribe to the topic: " + TOPIC);
+64.
+65.         } catch (MqttException e) {
+66.             System.err.println("Error connecting to MQTT broker: " + e.getMessage());
+67.             e.printStackTrace();
+68.             throw new RuntimeException("Error connecting to MQTT broker: " + e.getMessage(), e);
+69.         }
+70.     }
+71. }
+
+
+     Приклад програмного коду для створення резервних копій бази даних FlameGuard:
+1.  public void createDatabaseBackup(String backupFilePath) {
+2.      backupFilePath = ensureSqlExtension(backupFilePath);
+3.      Path backupPath = prepareBackupFile(backupFilePath);
+4.
+5.      String command = String.format("mysqldump -u%s -p%s %s > '%s'",
+6.              "root", "12345678", "FlameGuard", backupPath.toAbsolutePath());
+7.
+8.      executeShellCommand(command, "Backup created successfully at %s", "Failed to create database backup");
+9.  }
+10.
+11. private String ensureSqlExtension(String path) {
+12.     return path.endsWith(".sql") ? path : path + ".sql";
+13. }
+14.
+15. private Path prepareBackupFile(String backupFilePath) {
+16.     Path backupPath = Paths.get(backupFilePath);
+17.     try {
+18.         if (backupPath.getParent() != null) {
+19.             Files.createDirectories(backupPath.getParent());
+20.         }
+21.
+22.         if (!Files.exists(backupPath)) {
+23.             Files.createFile(backupPath);
+24.         }
+25.
+26.         if (!Files.isWritable(backupPath)) {
+27.             throw new IOException("No write permission to the backup file path.");
+28.         }
+29.
+30.         return backupPath;
+31.
+32.     } catch (IOException e) {
+33.         logger.error("Failed to prepare backup file: {}", e.getMessage(), e);
+34.         throw new RuntimeException("Could not prepare backup file", e);
+35.     }
+36. }
+37.
+38. private void executeShellCommand(String command, String successMessageFormat, String errorMessage) {
+39.     String[] shellCommand = {"bash", "-c", command};
+40.
+41.     try {
+42.         ProcessBuilder pb = new ProcessBuilder(shellCommand);
+43.         pb.redirectErrorStream(true);
+44.         Process process = pb.start();
+45.
+46.         try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+47.             String line;
+48.             while ((line = reader.readLine()) != null) {
+49.                 logger.info("[shell] {}", line);
+50.             }
+51.         }
+52.
+53.         int exitCode = process.waitFor();
+54.         if (exitCode == 0) {
+55.             logger.info(successMessageFormat, command);
+56.         } else {
+57.             logger.error("{} with exit code {}", errorMessage, exitCode);
+58.             throw new RuntimeException(errorMessage + ". Exit code: " + exitCode);
+59.         }
+60.
+61.     } catch (IOException | InterruptedException e) {
+62.         logger.error("Error executing command '{}': {}", command, e.getMessage(), e);
+63.         throw new RuntimeException(errorMessage, e);
+64.     }
+65. }
