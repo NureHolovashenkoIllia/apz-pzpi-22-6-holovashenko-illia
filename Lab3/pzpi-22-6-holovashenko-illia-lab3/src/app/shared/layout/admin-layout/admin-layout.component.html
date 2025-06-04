@@ -1,0 +1,15 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <h3 class="nav-title">Адмін-панель</h3>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/users" routerLinkActive="active"><span class="nav-text">Користувачі</span></a>
+      <a mat-list-item routerLink="/admin/buildings" routerLinkActive="active"><span class="nav-text">Будівлі</span></a>
+      <a mat-list-item routerLink="/admin/settings" routerLinkActive="active"><span class="nav-text">Налаштування</span></a>
+      <a mat-list-item routerLink="/admin/backup" routerLinkActive="active"><span class="nav-text">Бекап</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,28 @@
+<div class="maintenance-container">
+  <div class="card-grid">
+    <mat-card *ngFor="let m of maintenances" class="maintenance-card mat-elevation-z3">
+      <mat-card-header>
+        <mat-card-title>{{ m.datePerformed | date: 'longDate' }}</mat-card-title>
+        <mat-card-subtitle>
+          Вартість: {{ m.cost | currency:'UAH':'symbol' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ m.workDescription }}</p>
+        <div *ngIf="m.payment">
+          <p>
+            Статус оплати:
+            <strong [style.color]="m.payment.paymentStatus === 'completed' ? 'green' : 'orange'">
+              {{ m.payment.paymentStatus === 'completed' ? 'Сплачено' : 'Очікує оплати' }}
+            </strong>
+          </p>
+        </div>
+        <div *ngIf="!m.payment || m.payment.paymentStatus !== 'completed'">
+          <button mat-raised-button color="primary" (click)="pay(m.maintenanceId)">
+            Оплатити
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.backup-card {
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #000 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #000 !important;
+}
+
+mat-card-content p {
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: #000 !important;
+}
+
+button[mat-raised-button] {
+  color: #fff;
+  background-color: #1976d2;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+mat-progress-bar {
+  margin-top: 20px;
+}

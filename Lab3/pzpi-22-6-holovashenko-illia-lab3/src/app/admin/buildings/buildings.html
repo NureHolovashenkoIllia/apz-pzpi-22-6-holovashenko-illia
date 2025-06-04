@@ -1,0 +1,39 @@
+<mat-card class="buildings-card">
+  <mat-card-title>Керування будівлями</mat-card-title>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+  <mat-card-content>
+    <table class="buildings-table" *ngIf="!isLoading">
+      <thead>
+      <tr>
+        <th>Назва</th>
+        <th>Опис</th>
+        <th>Тип</th>
+        <th>Стан</th>
+        <th>Дата створення</th>
+        <th>Дії</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let b of buildings">
+        <td>{{ b.buildingName }}</td>
+        <td>{{ b.buildingDescription }}</td>
+        <td>{{ b.buildingType }}</td>
+        <td>{{ b.buildingCondition }}</td>
+        <td>{{ b.creationDate | date: 'shortDate' }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="updateBuilding(b)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteBuilding(b.buildingId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="addMaintenance(b.buildingId)">
+            <mat-icon>build</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

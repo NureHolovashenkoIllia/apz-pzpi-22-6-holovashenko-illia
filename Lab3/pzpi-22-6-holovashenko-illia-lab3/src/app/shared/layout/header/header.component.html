@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span class="logo">FlameGuard</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard">Панель</a>
+  <a mat-button *ngIf="userRole() === 'system_administrator' || userRole() === 'database_admin' || userRole() === 'global_administrator'" routerLink="/admin">Адмінка</a>
+  <a mat-button *ngIf="!isLoggedIn()" routerLink="/login">Увійти</a>
+  <a mat-button *ngIf="!isLoggedIn()" routerLink="/register">Реєстрація</a>
+  <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Вийти</button>
+</mat-toolbar>

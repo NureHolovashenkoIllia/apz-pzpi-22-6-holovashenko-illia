@@ -1,0 +1,22 @@
+<div class="overview-container">
+  <mat-card class="welcome-card">
+    <h2>Ласкаво просимо до FlameGuard</h2>
+    <p>Керуйте своїми будівлями, слідкуйте за сенсорами та отримуйте сповіщення про тривоги.</p>
+
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" routerLink="/dashboard/profile">Мій профіль</button>
+      <button mat-raised-button color="accent" routerLink="/dashboard/buildings">Мої будівлі</button>
+      <button mat-raised-button color="warn" (click)="addBuilding()">Додати будівлю</button>
+    </div>
+  </mat-card>
+
+  <mat-card class="overview-card">
+    <h3>Кількість будівель</h3>
+    <p>{{ buildingsCount }}</p>
+  </mat-card>
+
+  <mat-card class="overview-card">
+    <h3>Кількість сенсорів</h3>
+    <p>{{ sensorsCount }}</p>
+  </mat-card>
+</div>

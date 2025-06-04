@@ -1,0 +1,69 @@
+.buildings-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Контейнер з будівлями: флекс ряд з переносом */
+.buildings-container {
+  display: flex;
+  flex-wrap: wrap;      /* дозволяє переносити на новий рядок */
+  gap: 1.5rem;
+  justify-content: flex-start;
+  transition: filter 0.3s;
+}
+
+/* Додаємо розмиття/затемнення коли показана форма */
+.buildings-container.blur {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Картка будівлі */
+.building-card {
+  flex: 1 1 250px; /* мінімальна ширина 250px, може розтягуватись */
+  max-width: 280px;
+  padding: 1.5rem;
+  background-color: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.building-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма додавання будівлі - поверх всього екрану, по центру */
+.add-building-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffffee;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  border-radius: 12px;
+  z-index: 1000;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Ширина полів форми */
+.full-width {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}

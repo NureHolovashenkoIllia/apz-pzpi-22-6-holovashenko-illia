@@ -1,0 +1,42 @@
+<div class="buildings-wrapper">
+  <mat-card *ngIf="showAddForm" class="add-building-form">
+    <h3>Додати будівлю</h3>
+
+    <form [formGroup]="buildingForm" (ngSubmit)="submitBuilding()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Назва</mat-label>
+        <input matInput formControlName="buildingName" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Опис</mat-label>
+        <textarea matInput formControlName="buildingDescription" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Тип</mat-label>
+        <input matInput formControlName="buildingType" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Стан</mat-label>
+        <input matInput formControlName="buildingCondition" required />
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="buildingForm.invalid">Зберегти</button>
+        <button mat-flat-button color="warn" type="button" (click)="cancel()">Скасувати</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="buildings-container" [class.blur]="showAddForm">
+    <mat-card *ngFor="let b of buildings" class="building-card" (click)="viewBuilding(b.buildingId)">
+      <h3>{{ b.buildingName }}</h3>
+      <p><strong>Опис:</strong> {{ b.buildingDescription }}</p>
+      <p><strong>Тип:</strong> {{ b.buildingType }}</p>
+      <p><strong>Стан:</strong> {{ b.buildingCondition }}</p>
+      <p><strong>Дата створення:</strong> {{ b.creationDate | date:'mediumDate' }}</p>
+    </mat-card>
+  </div>
+</div>

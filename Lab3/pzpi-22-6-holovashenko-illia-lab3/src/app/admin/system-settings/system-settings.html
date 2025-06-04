@@ -1,0 +1,32 @@
+<mat-card class="settings-card">
+  <mat-card-title>Системні налаштування</mat-card-title>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+  <mat-card-content>
+    <table class="settings-table" *ngIf="!isLoading">
+      <tr *ngFor="let setting of settings">
+        <td><strong>{{ setting.key }}</strong></td>
+        <td>{{ setting.value }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="updateSetting(setting)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="add-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Ключ</mat-label>
+        <input matInput [(ngModel)]="newKey">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Значення</mat-label>
+        <input matInput [(ngModel)]="newValue">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="saveSetting()">Додати</button>
+    </div>
+  </mat-card-content>
+</mat-card>

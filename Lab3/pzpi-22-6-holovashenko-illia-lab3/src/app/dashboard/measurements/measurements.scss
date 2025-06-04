@@ -1,0 +1,40 @@
+.measurement-card {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.empty-text {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+// Класи для рівня небезпеки
+.normal {
+  background-color: white;
+  color: #000000;
+}
+
+.warn-light {
+  background-color: #fff5f5;
+  color: #000000;
+}
+
+.warn-medium {
+  background-color: #ffcccc;
+  color: #000000;
+}
+
+.warn-strong {
+  background-color: #ff9999;
+  color: #000000;
+}

@@ -1,0 +1,61 @@
+mat-card {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9fafc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  color: #000 !important; // ← основний фолбекап
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000 !important; // ← заголовок
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+mat-header-cell,
+mat-cell,
+td,
+th {
+  color: #000 !important; // ← ключовий момент: всі клітинки
+  font-size: 14px;
+}
+
+mat-header-cell {
+  background-color: #e9ecef;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+mat-row:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+mat-row:hover {
+  background-color: #eef2f7;
+}
+
+button.mat-icon-button {
+  margin-right: 8px;
+}
+
+mat-icon {
+  color: #5c6bc0;
+}
+
+button[color="warn"] mat-icon {
+  color: #f44336;
+}
+
+mat-progress-bar {
+  margin-bottom: 12px;
+}

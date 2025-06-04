@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Редагувати будівлю</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Назва</mat-label>
+    <input matInput formControlName="buildingName">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Опис</mat-label>
+    <textarea matInput formControlName="buildingDescription"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Тип</mat-label>
+    <input matInput formControlName="buildingType">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Стан</mat-label>
+    <input matInput formControlName="buildingCondition">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Дата створення</mat-label>
+    <input matInput formControlName="creationDate" type="date">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>ID користувача</mat-label>
+    <input matInput formControlName="userAccountId" type="number">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Скасувати</button>
+  <button mat-raised-button color="primary" (click)="save()">Зберегти</button>
+</mat-dialog-actions>

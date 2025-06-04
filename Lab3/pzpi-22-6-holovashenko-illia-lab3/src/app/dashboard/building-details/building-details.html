@@ -1,0 +1,25 @@
+<div class="details-container" *ngIf="building">
+  <mat-card class="building-card">
+    <h2>{{ building.buildingName }}</h2>
+    <p><strong>Опис:</strong> {{ building.buildingDescription }}</p>
+    <p><strong>Тип:</strong> {{ building.buildingType }}</p>
+    <p><strong>Стан:</strong> {{ building.buildingCondition }}</p>
+    <p><strong>Дата створення:</strong> {{ building.creationDate | date: 'medium' }}</p>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="goToMaintenances()">Обслуговування</button>
+      <button mat-raised-button color="accent" (click)="goToSensors()">Сенсори</button>
+    </div>
+  </mat-card>
+
+  <mat-card class="sensors-card" *ngIf="sensors.length > 0">
+    <h3>Сенсори</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let sensor of sensors">
+        <p class="sensor-text"><strong>{{ sensor.sensorName }}</strong> — {{ sensor.sensorStatus }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <p *ngIf="sensors.length === 0" class="empty-state">Немає сенсорів для цієї будівлі.</p>
+</div>

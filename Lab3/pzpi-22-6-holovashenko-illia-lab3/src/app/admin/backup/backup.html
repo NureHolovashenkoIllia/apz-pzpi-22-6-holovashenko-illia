@@ -1,0 +1,11 @@
+<mat-card class="backup-card">
+  <mat-card-title>Бекап бази даних</mat-card-title>
+  <mat-card-content>
+    <p>Натисніть кнопку нижче, щоб зберегти поточну копію бази даних системи FlameGuard.</p>
+    <button mat-raised-button color="primary" (click)="downloadBackup()" [disabled]="isLoading">
+      <mat-icon>backup</mat-icon>
+      Завантажити бекап
+    </button>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  </mat-card-content>
+</mat-card>

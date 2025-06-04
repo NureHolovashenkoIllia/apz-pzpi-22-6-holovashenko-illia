@@ -1,0 +1,41 @@
+<div class="profile-container" *ngIf="user">
+  <mat-card class="profile-card">
+    <form [formGroup]="form" (ngSubmit)="saveChanges()">
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+
+      <mat-form-field appearance="outline" class="full-width" *ngIf="isEditing">
+        <mat-label>Ім’я</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" *ngIf="isEditing">
+        <mat-label>Прізвище</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Телефон</mat-label>
+        <input matInput formControlName="phoneNumber" [readonly]="!isEditing">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Роль</mat-label>
+        <input matInput formControlName="userRole" readonly>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-raised-button type="button" color="accent" (click)="toggleEdit()">
+          {{ isEditing ? 'Скасувати' : 'Редагувати' }}
+        </button>
+        <button mat-raised-button color="primary" type="submit" *ngIf="isEditing">
+          Зберегти
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

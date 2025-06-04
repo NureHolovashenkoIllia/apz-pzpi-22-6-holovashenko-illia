@@ -1,0 +1,31 @@
+<div class="sensors-container">
+  <div class="header">
+    <h2>Сенсори будівлі</h2>
+    <button mat-raised-button color="primary" (click)="addSensor()">Додати сенсор</button>
+  </div>
+
+  <ng-container *ngIf="sensors.length > 0; else empty">
+    <div class="card-grid">
+      <mat-card *ngFor="let s of sensors" class="sensor-card mat-elevation-z3">
+        <mat-card-header>
+          <mat-card-title>{{ s.sensorName }}</mat-card-title>
+          <mat-card-subtitle>{{ s.sensorType }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Статус:</strong> {{ s.sensorStatus }}</p>
+          <p><strong>Останні дані:</strong> {{ s.lastDataReceived | date: 'medium' }}</p>
+          <p><strong>Дата додавання:</strong> {{ s.dateAdded | date: 'medium' }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" (click)="editSensor(s)">Редагувати</button>
+          <button mat-stroked-button color="accent" (click)="goToAlarms(s.sensorId)">Тривоги</button>
+          <button mat-stroked-button color="warn" (click)="goToMeasurements(s.sensorId)">Виміри</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <p class="empty-text">Сенсори не знайдені</p>
+  </ng-template>
+</div>

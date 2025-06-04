@@ -1,0 +1,33 @@
+.alarm-card {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.resolved-row {
+  background-color: #e8f5e9; // light green
+  color: #000000;
+}
+
+.unresolved-row {
+  background-color: #ffebee; // light red
+  color: #000000;
+}
+
+.empty-text {
+  text-align: center;
+  color: #888;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+button {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+}
+
+.resolved-label {
+  color: #777;
+}

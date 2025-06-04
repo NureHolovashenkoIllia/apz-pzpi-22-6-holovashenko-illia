@@ -1,0 +1,51 @@
+.profile-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  color: #000;
+}
+
+.profile-card {
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #000;
+
+  h2 {
+    color: #000;
+  }
+
+  mat-form-field {
+    color: #000;
+
+    mat-label {
+      color: #000 !important;
+    }
+
+    input {
+      color: #000 !important;
+    }
+
+    .mat-form-field-outline, .mat-form-field-outline-start, .mat-form-field-outline-end {
+      color: #000 !important;
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .mat-form-field-underline {
+      background-color: rgba(0, 0, 0, 0.42);
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}

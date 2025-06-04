@@ -1,0 +1,62 @@
+.auth-container {
+  max-width: 460px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  color: #000 !important;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #000 !important;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  mat-form-field {
+    color: #000 !important;
+
+    mat-label,
+    mat-form-field-label,
+    mat-input-element,
+    mat-select,
+    mat-select-value,
+    mat-option {
+      color: #000 !important;
+      background-color: #fff !important;
+    }
+
+    mat-select-arrow {
+      color: #000 !important;
+    }
+  }
+
+  mat-option {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+
+  input,
+  select,
+  textarea {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+
+  button {
+    background-color: #e0f0ff !important;
+    color: #000 !important;
+    font-weight: 500;
+  }
+
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}

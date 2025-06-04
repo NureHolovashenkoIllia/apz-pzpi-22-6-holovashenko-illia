@@ -1,0 +1,36 @@
+.overview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+  background-color: #fefefe;
+  color: #222;
+}
+
+mat-card {
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background-color: #fdfdfd;
+}
+
+.overview-card {
+  flex: 1 1 250px;
+  border: 1px solid #e0e0e0;
+}
+
+.welcome-card {
+  flex: 1 1 100%;
+  background-color: #f5faff;
+  border-left: 5px solid #1976d2;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
