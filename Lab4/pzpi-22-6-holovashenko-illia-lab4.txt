@@ -1,0 +1,437 @@
+Міністерство освіти і науки України
+Харківський національний університет радіоелектроніки
+Факультет комп’ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+
+з лабораторної роботи №4
+з дисципліни "Архітектура програмного забезпечення"
+на тему "РОЗРОБКА ПРОГРАМНОЇ АРХІТЕКТУРИ ТА СТВОРЕННЯ І
+ВІДЛАГОДЖЕННЯ ПРОГРАМНОГО КОДУ ПРОГРАМНОГО
+ЗАСТОСУНКУ МОБІЛЬНОГО ПРИСТРОЮ ДЛЯ ПРОГРАМНОЇ
+СИСТЕМИ"
+
+
+
+Виконав:
+ст. гр. ПЗПІ-22-6
+Головашенко І. В.
+
+Перевірив:
+ст. викл. катедри ПІ
+Сокорчук І. П.
+
+
+
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+Таблиця 1.1 – Історія змін
+№
+Дата
+Версія звіту
+Опис змін та виправлень
+1
+18.05.2025
+0.1
+Створено розділи “Історія змін” та “Завдання”.
+2
+04.06.2025
+0.1
+Створено розділ “Опис виконаної роботи”.
+3
+05.06.2025
+0.1
+Створено розділи “Висновки” та додатки А, Б, В.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 ЗАВДАННЯ
+
+Завдання на лабораторну роботу №4 (ЛБ4):
+1. Описати програмну архітектуру мобільного застосунку для програмної системи.
+2. Описати програмні технології та компоненти, які використовуються в мобільного застосунку для програмної системи.
+3. Описати доступну у мобільного застосунку бізнес логіку програмної системи.
+4. Описати захист даних у мобільного застосунку для програмної системи.
+5. Описати взаємодію мобільного застосунку для програмної системи з іншими компонентами програмної системи.
+6. Описати реалізовану у мобільного застосунку для програмної системи функціональність для налаштування та адміністрування програмної системи.
+7. Відкрити створений на попередній лабораторній роботі репозиторій GitHub.
+8.  Створити у репозиторії директорію Task4 та текстовий файл з описом інженерних рішень у цій частині проєкту.
+9.  Зафіксуйте кожну внесену зміну командою git commit з відповідним коментарем та фіксуйте цією командою усі наступні зміни у проєкті.
+10.  Створіть у директорії Task4 піддиректорію для програмного коду.
+11.  Створіть програмний код, завантажте його у створену піддиректорію, зафіксуйте внесені у репозиторій зміни.
+12.  Виконайте функціональне тестування створеного програмного коду та створіть відеозапис цього тестування тривалістю 7..10 хвилин з усними поясненнями процесу тестування.
+13.  Завантажте створений відеозапис тестування YouTube канал для вашого облікового запису в домені @nure.ua.
+14.  Створіть для завантаженого запису його хронологічний опис.
+15.  Оформіть звіт у форматі pdf та завантажте його на навчальну платформу https://dl.nure.ua/.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+     У ході виконання лабораторної роботи №4 було розроблено мобільний застосунок FlameGuard для взаємодії користувача з програмною системою. Під час реалізації застосунку були застосовані сучасні інженерні та архітектурні рішення, що відповідають принципам масштабованості, безпеки та зручності користування.
+     Для реалізації клієнтської частини застосунку обрано мову Kotlin, яка є сучасним стандартом для Android-розробки, повністю підтримується Jetpack Compose та має розвинену екосистему для роботи з корутинами, HTTP-запитами, DI та локальними сховищами.
+     Архітектура застосунку реалізована за шаблоном MVVM (Model–View–ViewModel), що забезпечує чіткий розподіл відповідальностей між представленням інтерфейсу, бізнес-логікою та даними.
+- Model: DTO-об’єкти, API-сервіси (Retrofit).
+- ViewModel: обробка логіки завантаження, створення та фільтрації даних.
+- View: Composable-функції Jetpack Compose, які реагують на зміни стану ViewModel.
+Використання шаблонів та інструментів
+- Hilt (DI): для впровадження залежностей.
+- Retrofit + OkHttp + Interceptor: для авторизованої взаємодії з сервером.
+- Jetpack DataStore: для збереження токену авторизації та userId.
+- Navigation Component: для управління екранною навігацією.
+Реалізована функціональність
+- Авторизація та автоматичний вхід за токеном.
+- Вивід будівель користувача та додавання нової будівлі.
+- Перегляд сенсорів будівлі, додавання сенсора, перегляд вимірів.
+- Фільтрація сенсорів за типом.
+- Візуалізація вимірів у вигляді стовпчикових діаграм з динамічною генерацією кольору за рівнем критичності.
+- Збереження авторизаційних даних локально.
+UML діаграма прецедентів (Use Case Diagram) зображена на рисунку Б.1 у додатку Б.
+UML діаграма компонент (Component Diagram) зображена на рисунку Б.2 у додатку Б.
+UML діаграма взаємодії (Interaction Overview Diagram) зображена на рисунку Б.3 у додатку Б.
+UML діаграма діяльності (Activity Diagram) зображена на рисунку Б.4 у додатку Б.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 ВИСНОВКИ
+
+     У результаті виконання лабораторної роботи №4 було створено мобільний застосунок FlameGuard, який дозволяє користувачеві взаємодіяти з програмною системою попередження про пожежі шляхом перегляду будівель, підключених сенсорів та аналізу вимірів.
+     Під час виконання роботи:
+- Отримано практичні навички побудови архітектури MVVM у контексті Android-розробки.
+- Реалізовано безпечне збереження токену та авторизацію користувача.
+- Забезпечено масштабовану логіку взаємодії з REST API за допомогою Retrofit та DI.
+- Реалізовано візуалізацію критичних даних за допомогою графіків та кольорового кодування.
+- Оформлено звіт та виконано тестування застосунку.
+     Розроблений програмний продукт відповідає вимогам лабораторної роботи та демонструє правильне застосування архітектурних підходів та сучасних інструментів Android-розробки.
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток А
+Посилання на відеозапис доповіді та текст хронологічного опису доповіді
+
+Відеозапис доповіді на YouTube: https://youtu.be/cVWrkMdP398.
+Хронологічний опис відеозапису:
+00:00 – Представлення.
+00:24 – Опис архітектури проєкту.
+03:27 – Тестування авторизації користувачів.
+05:32 – Тестування екрану профілю користувача. Перегляд та редагування профілю.
+06:03 – Тестування екрану будівель користувача. Додання нової будівлі.
+06:40 – Тестування екрану сенсорів користувача. Додання нового сенсору.
+07:29 – Тестування екрану вимірів сенсора. Додання вимірів за допомогою IoT клієнту.
+08:30 – Тестування бізнес логіки відображення діаграм на основі даних з датчиків.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Додаток Б
+Графічні матеріали
+
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.1 — UML діаграма прецедентів
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.2 — UML діаграма компонентів
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.3 — UML діаграма взаємодії
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Рисунок Б.4 — UML діаграма діяльності
+Додаток В
+Програмний код
+
+В.1 Dagger Hilt-модуль для надання мережевих залежностей Retrofit, OkHttp, Interceptor'ів і API-сервісів
+GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/blob/main/Lab4/pzpi-22-6-holovashenko-illia-lab4/app/src/main/java/ua/nure/holovashenko/flameguard_mobile/di/NetworkModule.kt
+1.  @Module
+2.  @InstallIn(SingletonComponent::class)
+3.  object NetworkModule {
+4.
+5.      private const val BASE_URL = "http://10.0.2.2:8080/"
+6.
+7.      @Provides
+8.      @Singleton
+9.      fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+10.         HttpLoggingInterceptor().apply {
+11.             level = HttpLoggingInterceptor.Level.BODY
+12.         }
+13.
+14.     @Provides
+15.     @Singleton
+16.     fun provideOkHttpClient(
+17.         logging: HttpLoggingInterceptor,
+18.         authInterceptor: AuthInterceptor
+19.     ): OkHttpClient = OkHttpClient.Builder()
+20.         .addInterceptor(logging)
+21.         .addInterceptor(authInterceptor)
+22.         .build()
+23.
+24.     @Provides
+25.     @Singleton
+26.     fun provideGson(): Gson = GsonBuilder().create()
+27.
+28.     @Provides
+29.     @Singleton
+30.     fun provideRetrofit(client: OkHttpClient, gson: Gson): Retrofit =
+31.         Retrofit.Builder()
+32.             .baseUrl(BASE_URL)
+33.             .client(client)
+34.             .addConverterFactory(GsonConverterFactory.create(gson))
+35.             .build()
+36.
+37.     @Provides
+38.     @Singleton
+39.     fun provideAuthInterceptor(tokenDataStore: TokenDataStore): AuthInterceptor {
+40.         return AuthInterceptor(tokenDataStore)
+41.     }
+42.
+43.     @Provides
+44.     @Singleton
+45.     fun provideAuthApi(retrofit: Retrofit): AuthApi =
+46.         retrofit.create(AuthApi::class.java)
+47.
+48.     @Provides
+49.     @Singleton
+50.     fun provideUserApi(retrofit: Retrofit): UserApi =
+51.         retrofit.create(UserApi::class.java)
+52.
+53.     @Provides
+54.     @Singleton
+55.     fun provideBuildingApi(retrofit: Retrofit): BuildingApi =
+56.         retrofit.create(BuildingApi::class.java)
+57.
+58.     @Provides
+59.     @Singleton
+60.     fun provideSensorApi(retrofit: Retrofit): SensorApi =
+61.         retrofit.create(SensorApi::class.java)
+62.
+63.     @Provides
+64.     @Singleton
+65.     fun provideMeasurementApi(retrofit: Retrofit): MeasurementApi =
+66.         retrofit.create(MeasurementApi::class.java)
+67. }
+
+В.2 Барчарт-компонент для відображення вимірювань сенсорів у вигляді графіку із кольоровим кодуванням та підписами шкали
+GitHub репозиторій: https://github.com/NureHolovashenkoIllia/apz-pzpi-22-6-holovashenko-illia/blob/main/Lab4/pzpi-22-6-holovashenko-illia-lab4/app/src/main/java/ua/nure/holovashenko/flameguard_mobile/presentation/ui/diagrams/BarChart.kt
+1.  @Composable
+2.  fun BarChart(
+3.      data: List<Pair<String, Int>>,
+4.      modifier: Modifier = Modifier
+5.  ) {
+6.      if (data.isEmpty()) {
+7.          Box(
+8.              modifier = modifier.fillMaxSize(),
+9.              contentAlignment = Alignment.Center
+10.         ) {
+11.             Text("No data available for chart", color = MaterialTheme.colorScheme.error)
+12.         }
+13.         return
+14.     }
+15.
+16.     val values = data.map { it.second.toFloat() }
+17.     val labels = data.map { it.first }
+18.     val maxValue = values.maxOrNull() ?: 1f
+19.     val textMeasurer = rememberTextMeasurer()
+20.
+21.     val barTextStyle = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp, color = Color.White)
+22.     Column(modifier = modifier.fillMaxSize()) {
+23.         Row(
+24.             modifier = Modifier
+25.                 .fillMaxWidth()
+26.                 .weight(1f)
+27.                 .padding(end = 8.dp),
+28.             verticalAlignment = Alignment.Bottom,
+29.             horizontalArrangement = Arrangement.SpaceBetween
+30.         ) {
+31.             val yAxisLabels = listOf(0, (maxValue * 0.25).roundToInt(), (maxValue * 0.5).roundToInt(), (maxValue * 0.75).roundToInt(), maxValue.roundToInt())
+32.             Column(verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.End, modifier = Modifier.fillMaxHeight()) {
+33.                 yAxisLabels.reversed().forEach { value ->
+34.                     Text(text = value.toString(), style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+35.                 }
+36.             }
+37.             Spacer(modifier = Modifier.width(8.dp))
+38.             Canvas(
+39.                 modifier = Modifier
+40.                     .weight(1f)
+41.                     .fillMaxHeight()
+42.             ) {
+43.                 val chartWidth = size.width
+44.                 val chartHeight = size.height
+45.                 val barWidth = chartWidth / (values.size * 1.5f)
+46.                 val spaceBetweenBars = barWidth / 2
+47.
+48.                 values.forEachIndexed { index, value ->
+49.                     val barHeight = (value / maxValue) * chartHeight
+50.                     val x = (index * (barWidth + spaceBetweenBars)) + spaceBetweenBars / 2
+51.                     val y = chartHeight - barHeight
+52.
+53.                     val barColor = when (index % 5) {
+54.                         0 -> Color(0xFF5DADE2)
+55.                         1 -> Color(0xFF82B96B)
+56.                         2 -> Color(0xFF888888)
+57.                         3 -> Color(0xFFF7C751)
+58.                         4 -> Color(0xFFF16E5A)
+59.                         else -> Color.Gray
+60.                     }
+61.
+62.                     drawRect(
+63.                         color = barColor,
+64.                         topLeft = Offset(x, y),
+65.                         size = Size(barWidth, barHeight)
+66.                     )
+67.
+68.                     val textLayoutResult = textMeasurer.measure(
+69.                         text = value.roundToInt().toString(),
+70.                         style = barTextStyle
+71.                     )
+72.                     drawText(
+73.                         textLayoutResult = textLayoutResult,
+74.                         topLeft = Offset(
+75.                             x = x + (barWidth - textLayoutResult.size.width) / 2,
+76.                             y = y - textLayoutResult.size.height - 4.dp.toPx()
+77.                         )
+78.                     )
+79.                 }
+80.             }
+81.         }
+82.
+83.         Spacer(modifier = Modifier.height(4.dp))
+84.
+85.         Row(
+86.             modifier = Modifier
+87.                 .fillMaxWidth()
+88.                 .padding(horizontal = 24.dp),
+89.             horizontalArrangement = Arrangement.SpaceAround
+90.         ) {
+91.             labels.forEach { label ->
+92.                 Text(
+93.                     text = label,
+94.                     style = MaterialTheme.typography.bodySmall,
+95.                     color = Color.Gray,
+96.                     modifier = Modifier.weight(1f),
+97.                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
+98.                 )
+99.             }
+100.        }
+101.    }
+102. }
