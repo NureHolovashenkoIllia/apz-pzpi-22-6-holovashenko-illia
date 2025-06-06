@@ -1,0 +1,14 @@
+# Stage 1: Build Angular з Node.js 20.19.0
+FROM node:20.19.0 AS builder
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build -- --configuration production
+
+# Stage 2: Nginx for serving
+FROM nginx:alpine
+COPY --from=builder /app/dist/FlameGuard-Frontend /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
